@@ -1,0 +1,478 @@
+{
+  "source_sha256": "bdc24ef9fc5f6995b0a1daeae8a6204c5913b7212384dbbfb837ffa67d480b74",
+  "item_count": 72,
+  "dimension_count": 5,
+  "dimensions": [
+    {
+      "name": "兴趣",
+      "count": 18,
+      "subdimensions": {
+        "R 实践与操作": 3,
+        "I 研究与探索": 3,
+        "A 创造与表达": 3,
+        "S 帮助与连接": 3,
+        "E 影响与推动": 3,
+        "C 组织与秩序": 3
+      }
+    },
+    {
+      "name": "优势",
+      "count": 20,
+      "subdimensions": {
+        "分析推理": 2,
+        "好奇探究": 2,
+        "创意联结": 2,
+        "规划执行": 2,
+        "坚持投入": 2,
+        "适应调整": 2,
+        "共情理解": 2,
+        "合作支持": 2,
+        "表达沟通": 2,
+        "组织带动": 2
+      }
+    },
+    {
+      "name": "偏好",
+      "count": 12,
+      "subdimensions": {
+        "具体 ↔ 抽象": 3,
+        "独立 ↔ 互动": 3,
+        "计划 ↔ 探索": 3,
+        "分析 ↔ 人本": 3
+      }
+    },
+    {
+      "name": "价值",
+      "count": 12,
+      "subdimensions": {
+        "自主与选择": 2,
+        "成长与挑战": 2,
+        "创造与表达": 2,
+        "关系与归属": 2,
+        "贡献与影响": 2,
+        "稳定与回报": 2
+      }
+    },
+    {
+      "name": "能力信心",
+      "count": 10,
+      "subdimensions": {
+        "理解复杂问题": 1,
+        "解决新问题": 1,
+        "表达想法": 1,
+        "与人合作": 1,
+        "组织推进": 1,
+        "应对挫折": 1,
+        "自主学习": 1,
+        "创造产出": 1,
+        "公开挑战": 1,
+        "未来探索": 1
+      }
+    }
+  ],
+  "item_ids": [
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04",
+    "Q05",
+    "Q06",
+    "Q07",
+    "Q08",
+    "Q09",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q13",
+    "Q14",
+    "Q15",
+    "Q16",
+    "Q17",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q29",
+    "Q30",
+    "Q31",
+    "Q32",
+    "Q33",
+    "Q34",
+    "Q35",
+    "Q36",
+    "Q37",
+    "Q38",
+    "Q39",
+    "Q40",
+    "Q41",
+    "Q42",
+    "Q43",
+    "Q44",
+    "Q45",
+    "Q46",
+    "Q47",
+    "Q48",
+    "Q49",
+    "Q50",
+    "Q51",
+    "Q52",
+    "Q53",
+    "Q54",
+    "Q55",
+    "Q56",
+    "Q57",
+    "Q58",
+    "Q59",
+    "Q60",
+    "Q61",
+    "Q62",
+    "Q63",
+    "Q64",
+    "Q65",
+    "Q66",
+    "Q67",
+    "Q68",
+    "Q69",
+    "Q70",
+    "Q71",
+    "Q72"
+  ],
+  "duplicate_ids": [],
+  "missing_ids_within_observed_sequence": [],
+  "duplicate_questions": [],
+  "blank_cells": [
+    {
+      "row": 6,
+      "item_id": "Q01",
+      "field": "偏好方向"
+    },
+    {
+      "row": 7,
+      "item_id": "Q02",
+      "field": "偏好方向"
+    },
+    {
+      "row": 8,
+      "item_id": "Q03",
+      "field": "偏好方向"
+    },
+    {
+      "row": 9,
+      "item_id": "Q04",
+      "field": "偏好方向"
+    },
+    {
+      "row": 10,
+      "item_id": "Q05",
+      "field": "偏好方向"
+    },
+    {
+      "row": 11,
+      "item_id": "Q06",
+      "field": "偏好方向"
+    },
+    {
+      "row": 12,
+      "item_id": "Q07",
+      "field": "偏好方向"
+    },
+    {
+      "row": 13,
+      "item_id": "Q08",
+      "field": "偏好方向"
+    },
+    {
+      "row": 14,
+      "item_id": "Q09",
+      "field": "偏好方向"
+    },
+    {
+      "row": 15,
+      "item_id": "Q10",
+      "field": "偏好方向"
+    },
+    {
+      "row": 16,
+      "item_id": "Q11",
+      "field": "偏好方向"
+    },
+    {
+      "row": 17,
+      "item_id": "Q12",
+      "field": "偏好方向"
+    },
+    {
+      "row": 18,
+      "item_id": "Q13",
+      "field": "偏好方向"
+    },
+    {
+      "row": 19,
+      "item_id": "Q14",
+      "field": "偏好方向"
+    },
+    {
+      "row": 20,
+      "item_id": "Q15",
+      "field": "偏好方向"
+    },
+    {
+      "row": 21,
+      "item_id": "Q16",
+      "field": "偏好方向"
+    },
+    {
+      "row": 22,
+      "item_id": "Q17",
+      "field": "偏好方向"
+    },
+    {
+      "row": 23,
+      "item_id": "Q18",
+      "field": "偏好方向"
+    },
+    {
+      "row": 24,
+      "item_id": "Q19",
+      "field": "偏好方向"
+    },
+    {
+      "row": 25,
+      "item_id": "Q20",
+      "field": "偏好方向"
+    },
+    {
+      "row": 26,
+      "item_id": "Q21",
+      "field": "偏好方向"
+    },
+    {
+      "row": 27,
+      "item_id": "Q22",
+      "field": "偏好方向"
+    },
+    {
+      "row": 28,
+      "item_id": "Q23",
+      "field": "偏好方向"
+    },
+    {
+      "row": 29,
+      "item_id": "Q24",
+      "field": "偏好方向"
+    },
+    {
+      "row": 30,
+      "item_id": "Q25",
+      "field": "偏好方向"
+    },
+    {
+      "row": 31,
+      "item_id": "Q26",
+      "field": "偏好方向"
+    },
+    {
+      "row": 32,
+      "item_id": "Q27",
+      "field": "偏好方向"
+    },
+    {
+      "row": 33,
+      "item_id": "Q28",
+      "field": "偏好方向"
+    },
+    {
+      "row": 34,
+      "item_id": "Q29",
+      "field": "偏好方向"
+    },
+    {
+      "row": 35,
+      "item_id": "Q30",
+      "field": "偏好方向"
+    },
+    {
+      "row": 36,
+      "item_id": "Q31",
+      "field": "偏好方向"
+    },
+    {
+      "row": 37,
+      "item_id": "Q32",
+      "field": "偏好方向"
+    },
+    {
+      "row": 38,
+      "item_id": "Q33",
+      "field": "偏好方向"
+    },
+    {
+      "row": 39,
+      "item_id": "Q34",
+      "field": "偏好方向"
+    },
+    {
+      "row": 40,
+      "item_id": "Q35",
+      "field": "偏好方向"
+    },
+    {
+      "row": 41,
+      "item_id": "Q36",
+      "field": "偏好方向"
+    },
+    {
+      "row": 42,
+      "item_id": "Q37",
+      "field": "偏好方向"
+    },
+    {
+      "row": 43,
+      "item_id": "Q38",
+      "field": "偏好方向"
+    },
+    {
+      "row": 56,
+      "item_id": "Q51",
+      "field": "偏好方向"
+    },
+    {
+      "row": 57,
+      "item_id": "Q52",
+      "field": "偏好方向"
+    },
+    {
+      "row": 58,
+      "item_id": "Q53",
+      "field": "偏好方向"
+    },
+    {
+      "row": 59,
+      "item_id": "Q54",
+      "field": "偏好方向"
+    },
+    {
+      "row": 60,
+      "item_id": "Q55",
+      "field": "偏好方向"
+    },
+    {
+      "row": 61,
+      "item_id": "Q56",
+      "field": "偏好方向"
+    },
+    {
+      "row": 62,
+      "item_id": "Q57",
+      "field": "偏好方向"
+    },
+    {
+      "row": 63,
+      "item_id": "Q58",
+      "field": "偏好方向"
+    },
+    {
+      "row": 64,
+      "item_id": "Q59",
+      "field": "偏好方向"
+    },
+    {
+      "row": 65,
+      "item_id": "Q60",
+      "field": "偏好方向"
+    },
+    {
+      "row": 66,
+      "item_id": "Q61",
+      "field": "偏好方向"
+    },
+    {
+      "row": 67,
+      "item_id": "Q62",
+      "field": "偏好方向"
+    },
+    {
+      "row": 68,
+      "item_id": "Q63",
+      "field": "偏好方向"
+    },
+    {
+      "row": 69,
+      "item_id": "Q64",
+      "field": "偏好方向"
+    },
+    {
+      "row": 70,
+      "item_id": "Q65",
+      "field": "偏好方向"
+    },
+    {
+      "row": 71,
+      "item_id": "Q66",
+      "field": "偏好方向"
+    },
+    {
+      "row": 72,
+      "item_id": "Q67",
+      "field": "偏好方向"
+    },
+    {
+      "row": 73,
+      "item_id": "Q68",
+      "field": "偏好方向"
+    },
+    {
+      "row": 74,
+      "item_id": "Q69",
+      "field": "偏好方向"
+    },
+    {
+      "row": 75,
+      "item_id": "Q70",
+      "field": "偏好方向"
+    },
+    {
+      "row": 76,
+      "item_id": "Q71",
+      "field": "偏好方向"
+    },
+    {
+      "row": 77,
+      "item_id": "Q72",
+      "field": "偏好方向"
+    }
+  ],
+  "structural_anomalies": [],
+  "formula_cells": [],
+  "reverse_item_ids": [],
+  "options": [
+    {
+      "value": 1,
+      "label": "完全不像我"
+    },
+    {
+      "value": 2,
+      "label": "不太像我"
+    },
+    {
+      "value": 3,
+      "label": "有点像，也有点不像"
+    },
+    {
+      "value": 4,
+      "label": "挺像我"
+    },
+    {
+      "value": 5,
+      "label": "很像我"
+    }
+  ],
+  "scoring_policy_status": "awaiting_confirmation"
+}
