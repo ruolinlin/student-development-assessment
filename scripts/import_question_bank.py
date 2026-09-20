@@ -59,7 +59,7 @@ audit = {'source_sha256': sha, 'item_count': len(items), 'dimension_count': len(
          'blank_cells': blanks, 'structural_anomalies': anomalies, 'formula_cells': formulas,
          'reverse_item_ids': [i['item_id'] for i in items if i['reverse_scoring']],
          'options': options, 'scoring_policy_status': 'awaiting_confirmation'}
-for path, value in [('data/question-bank.json', bank), ('docs/question-bank-audit.json', audit)]:
+for path, value in [('web/data/question-bank.json', bank), ('docs/question-bank-audit.json', audit)]:
     (ROOT/path).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
 
 lines = ['# 正式题库审计', '', f'源文件：`source/{SOURCE.name}`', f'SHA-256：`{sha}`', '',

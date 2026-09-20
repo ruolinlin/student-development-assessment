@@ -1,0 +1,30 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
+const baseURL = process.env.PREVIEW_URL ?? 'http://localhost:5186';
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+try {
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 }, reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  await page.goto(baseURL);
+  await page.getByRole('button', { name: '开始测评', exact: true }).focus();
+  await page.keyboard.press('Enter');
+  await page.getByLabel('我们怎么称呼你？').fill('键盘测试');
+  await page.getByLabel('我们怎么称呼你？').press('Enter');
+  await page.locator('#answer-1').waitFor();
+  await page.locator('#answer-1').focus();
+  await Promise.all([page.waitForResponse(r => r.url().endsWith('/api/session') && r.request().method() === 'PUT'), page.keyboard.press('Space')]);
+  await page.getByText('已保存 · 1 / 72 个回答', { exact: true }).waitFor();
+  await Promise.all([page.waitForResponse(r => r.url().endsWith('/api/session') && r.request().method() === 'PUT'), page.keyboard.press('ArrowRight')]);
+  await page.getByText('已保存 · 1 / 72 个回答', { exact: true }).waitFor();
+  const snapshot = await (await context.request.get(`${baseURL}/api/session`)).json();
+  assert.equal(snapshot.session.answers.Q01, 2);
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: fileURLToPath(new URL('../outputs/question-tablet.png', import.meta.url)), fullPage: true });
+  await page.addStyleTag({ content: 'html { font-size: 200% !important; }' });
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.getByRole('button', { name: '下一题', exact: true }).focus();
+  await page.keyboard.press('Enter');
+  await page.getByRole('heading', { name: '比起只听别人说，我更喜欢自己动手做、搭建或操作东西，也喜欢实际解决问题。' }).waitFor();
+  console.log('PASS: keyboard start, form submit, radio Space/ArrowRight, next Enter, 768px layout, reduced motion, 200% root font without horizontal overflow.');
+} finally { await browser.close(); }

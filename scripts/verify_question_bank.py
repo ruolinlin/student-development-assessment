@@ -6,7 +6,7 @@ import unittest
 import openpyxl
 
 ROOT = Path(__file__).resolve().parents[1]
-BANK = json.loads((ROOT/'data/question-bank.json').read_text())
+BANK = json.loads((ROOT/'web/data/question-bank.json').read_text())
 SOURCE = ROOT/'source'/BANK['source_file']
 WORKBOOK = openpyxl.load_workbook(SOURCE, data_only=False)
 
