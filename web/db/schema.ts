@@ -8,5 +8,8 @@ export const assessmentDrafts = sqliteTable('assessment_drafts', {
   currentIndex: integer('current_index').notNull(),
   revision: integer('revision').notNull(),
   status: text('status').notNull(),
+  personalInformation: text('personal_information').notNull().default('{"grade":"","strengthSubjects":"","achievementExperience":"","achievementReason":""}'),
+  currentProfileStep: integer('current_profile_step').notNull().default(0),
+  completedProfileSteps: integer('completed_profile_steps').notNull().default(0),
   updatedAt: text('updated_at').notNull(),
 });
