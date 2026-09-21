@@ -13,11 +13,22 @@ import { isComplete, questions, responseOptions } from '@/lib/question-bank';
 import { profileFields, validateSession, type AssessmentSession } from '@/lib/assessment-session';
 
 export function HelloArtwork() {
-  return <svg className="hello-art" viewBox="0 0 460 230" role="img" aria-label="Hello">
-    <defs><linearGradient id="hello-ink" gradientUnits="userSpaceOnUse" x1="35" y1="160" x2="420" y2="85"><stop stopColor="#2978f5"/><stop offset=".34" stopColor="#3989ff"/><stop offset=".64" stopColor="#586cf1"/><stop offset=".84" stopColor="#8a80ed"/><stop offset="1" stopColor="#54b9ec"/></linearGradient></defs>
-    <g fill="none" stroke="url(#hello-ink)" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round">
-      <path className="ink" pathLength="1" d="M35 159 C60 128 99 61 87 42 C72 20 52 86 47 137 L44 165 C57 138 78 107 92 119 C107 132 82 153 93 164 C105 178 123 157 139 136 C161 109 184 112 180 129 C175 145 136 152 137 136 C133 157 144 173 164 166 C187 158 209 126 227 94 C244 64 254 34 242 33 C226 31 206 87 203 123 C197 157 204 174 221 166 C242 154 264 114 280 77 C292 49 294 32 284 35 C269 40 251 94 247 126 C243 159 251 174 268 166 C284 159 298 138 311 125 C329 107 349 116 345 135 C341 155 325 172 312 167 C294 160 298 135 311 123 C323 111 337 116 344 126 C357 140 379 133 401 113"/>
-    </g>
+  return <svg className="hello-art" viewBox="0 0 680 270" role="img" aria-label="Hello">
+    <defs>
+      <linearGradient id="hello-ink" gradientUnits="userSpaceOnUse" x1="86" y1="128" x2="606" y2="145">
+        <stop stopColor="#58c6cd"/>
+        <stop offset=".34" stopColor="#78b7de"/>
+        <stop offset=".55" stopColor="#879ee5"/>
+        <stop offset=".75" stopColor="#aa7edb"/>
+        <stop offset=".91" stopColor="#db8bc4"/>
+        <stop offset="1" stopColor="#efa080"/>
+      </linearGradient>
+      <filter id="hello-glow" x="-20%" y="-40%" width="140%" height="200%">
+        <feGaussianBlur stdDeviation="22"/>
+      </filter>
+    </defs>
+    <ellipse className="hello-glow" cx="350" cy="220" rx="238" ry="23" fill="#c6a8e1" filter="url(#hello-glow)"/>
+    <text className="hello-script" x="50%" y="190" textAnchor="middle" fill="url(#hello-ink)">Hello</text>
   </svg>;
 }
 export function StageProgress({ active = 0, complete = false }: { active?: number; complete?: boolean }) {
@@ -147,7 +158,7 @@ export function StudentExperience() {
     finally { setSaving(false); }
   }
 
-  return <div className="experience"><header className="site-header"><a href="/" className="wordmark"><span className="brand-mark" aria-hidden="true">✳</span>学生发展优势测评</a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
+  return <div className={`experience experience-${screen}`}><header className="site-header"><a href="/" className="wordmark"><span className="brand-mark" aria-hidden="true">✳</span>学生发展优势测评</a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
     <main id="main-content"><StageProgress active={screen === 'counselor' ? 3 : screen === 'profile-complete' || screen === 'report' ? 2 : screen === 'complete' || screen === 'personal-information' ? 1 : 0} complete={session?.status === 'completed'}/>
       {error && <div className="error-message" role="alert">{error}{screen === 'home' && <Button variant="ghost" onClick={() => location.reload()}>重新读取</Button>}</div>}
       {screen === 'home' && <section className="welcome"><div className="welcome-art"><HelloArtwork/></div><p className="eyebrow">从现在的你，开始</p><h1>发现优势，理解自己，<br/><span>探索未来。</span></h1><Button disabled={loading || Boolean(error)} className="primary-action" onClick={() => setScreen(session ? resumeScreen(session) : 'hello')}>{loading ? '正在读取进度' : session ? '继续上次进度' : '开始测评'} <ArrowRight/></Button><p className="quiet-note">{session ? `${session.preferredName ? session.preferredName + '，' : ''}已为你保存 ${answered} / ${questions.length} 个回答` : '不必急着给未来一个答案'}</p></section>}
