@@ -11,6 +11,7 @@ import { StudentReportView } from '@/components/student-report';
 import { createStudentReport, type StudentReport } from '@/lib/student-report';
 import { isComplete, questions, responseOptions } from '@/lib/question-bank';
 import { profileFields, validateSession, type AssessmentSession } from '@/lib/assessment-session';
+import { createBrowserSession, loadBrowserSession, saveBrowserAnswer } from '@/lib/browser-session';
 
 export function HelloArtwork() {
   return <svg className="hello-art" viewBox="0 0 680 270" role="img" aria-label="Hello">
@@ -65,9 +66,8 @@ export function StudentExperience() {
 
   useEffect(() => {
     let active = true;
-    fetch('/api/session', { cache: 'no-store' }).then(async response => {
-      const body = await response.json() as { session?: unknown; error?: string };
-      if (!response.ok) throw new Error(body.error);
+    Promise.resolve().then(() => {
+      const body = { session: loadBrowserSession() };
       if (!active) return;
       if (body.session) {
         if (!validateSession(body.session)) throw new Error('已有进度暂时无法读取，请刷新后重试。');
@@ -98,9 +98,7 @@ export function StudentExperience() {
     if (saving) return;
     setSaving(true); setError('');
     try {
-      const response = await fetch('/api/session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ preferredName: name }) });
-      const body = await response.json() as { session?: unknown; error?: string };
-      if (!response.ok) throw new Error(body.error);
+      const body = { session: createBrowserSession(name) };
       if (!validateSession(body.session)) throw new Error('保存未完成，请重试。');
       adopt(body.session); setScreen('assessment');
     } catch (e) { setError(e instanceof Error ? e.message : '暂时无法连接，请重试。'); }
@@ -112,9 +110,7 @@ export function StudentExperience() {
     if (!current) throw new Error('请先开始测评。');
     setSaveState('pending'); setError('');
     try {
-      const response = await fetch('/api/session', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ revision: current.revision, currentIndex: index, ...(value === undefined ? {} : { answer: { item_id: questions[current.currentIndex].item_id, value } }) }) });
-      const body = await response.json() as { session?: unknown; error?: string };
-      if (!response.ok) throw new Error(body.error);
+      const body = { session: saveBrowserAnswer(current, index, value) };
       if (!validateSession(body.session)) throw new Error('保存结果不完整，请重试。');
       adopt(body.session); setSaveState('saved');
       return body.session;
@@ -149,16 +145,15 @@ export function StudentExperience() {
   async function generateReport() {
     setSaving(true); setError('');
     try {
-      const response = await fetch('/api/session', { cache: 'no-store' });
-      const body = await response.json() as { session?: unknown; error?: string };
-      if (!response.ok || !validateSession(body.session)) throw new Error(body.error || '暂时无法读取已保存的信息，请重试。');
+      const body = { session: loadBrowserSession() };
+      if (!validateSession(body.session)) throw new Error('暂时无法读取已保存的信息，请重试。');
       const nextReport = createStudentReport(body.session);
       adopt(body.session); setReport(nextReport); setScreen('report');
     } catch (e) { setError(e instanceof Error ? e.message : '暂时无法生成报告，请重试。'); }
     finally { setSaving(false); }
   }
 
-  return <div className={`experience experience-${screen}`}><header className="site-header"><a href="/" className="wordmark"><span className="brand-mark" aria-hidden="true">✳</span>学生发展优势测评</a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
+  return <div className={`experience experience-${screen}`}><header className="site-header"><a href="./" className="wordmark"><span className="brand-mark" aria-hidden="true">✳</span>学生发展优势测评</a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
     <main id="main-content"><StageProgress active={screen === 'counselor' ? 3 : screen === 'profile-complete' || screen === 'report' ? 2 : screen === 'complete' || screen === 'personal-information' ? 1 : 0} complete={session?.status === 'completed'}/>
       {error && <div className="error-message" role="alert">{error}{screen === 'home' && <Button variant="ghost" onClick={() => location.reload()}>重新读取</Button>}</div>}
       {screen === 'home' && <section className="welcome"><div className="welcome-art"><HelloArtwork/></div><p className="eyebrow">从现在的你，开始</p><h1>发现优势，理解自己，<br/><span>探索未来。</span></h1><Button disabled={loading || Boolean(error)} className="primary-action" onClick={() => setScreen(session ? resumeScreen(session) : 'hello')}>{loading ? '正在读取进度' : session ? '继续上次进度' : '开始测评'} <ArrowRight/></Button><p className="quiet-note">{session ? `${session.preferredName ? session.preferredName + '，' : ''}已为你保存 ${answered} / ${questions.length} 个回答` : '不必急着给未来一个答案'}</p></section>}

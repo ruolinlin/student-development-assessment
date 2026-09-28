@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { profileFields, validateSession, type AssessmentSession } from '@/lib/assessment-session';
+import { saveBrowserProfile } from '@/lib/browser-session';
 
 const prompts = [
   { title: '你现在几年级？', hint: '' },
@@ -41,9 +42,7 @@ export function PersonalInformation({ session, onSave, onDone, onBack }: { sessi
     const value = draft.current[profileFields[at]];
     setState('pending'); setError('');
     const task = queue.current.catch(() => {}).then(async () => {
-      const response = await fetch('/api/session', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'profile', revision: current.current.revision, step: at, value, complete, targetStep }) });
-      const body = await response.json() as { session?: unknown; error?: string };
-      if (!response.ok) throw new Error(body.error || '暂时无法保存，请重试。');
+      const body = { session: saveBrowserProfile(current.current, at, value, complete, targetStep) };
       if (!validateSession(body.session)) throw new Error('保存未完成，请重试。');
       const saved = body.session;
       current.current = saved; onSave(saved); setError('');
