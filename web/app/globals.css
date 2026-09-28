@@ -24,8 +24,8 @@ main { flex: 1; }
 .ink { stroke-dasharray: 1; stroke-dashoffset: 1; animation: write-hello 2.1s ease forwards; }
 @keyframes write-hello { to { stroke-dashoffset: 0; } }
 .eyebrow { color: #73798b; font-size: 14px; letter-spacing: .14em; margin: 0 0 21px; }
-.welcome h1 { font-size: clamp(32px,4vw,48px); line-height: 1.5; letter-spacing: -.035em; font-weight: 560; margin: 0; }
-.welcome h1 span { color: #7770b7; }
+.welcome h1 { color: #78b7de; font-size: clamp(32px,4vw,48px); line-height: 1.5; letter-spacing: -.035em; font-weight: 560; margin: 0; }
+.welcome h1 span { color: #aa7edb; }
 .welcome > .primary-action { margin-top: 34px; }
 button.primary-action { height: 54px; padding: 0 28px; border-radius: 100px; font-size: 16px; gap: 25px; background: #5752ad; color: white; box-shadow: 0 7px 20px #5752ad18; }
 button.primary-action:hover { background: #474294; transform: translateY(-1px); }
