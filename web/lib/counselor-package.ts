@@ -32,7 +32,7 @@ export function hasCompleteDimensionResults(data: StudentReportData): boolean {
     }) &&
     data.dimensionResults?.length === formalDimensions.length && formalDimensions.every(formal => {
       const result = data.dimensionResults?.find(d => d.key === formal.key && d.name === formal.name);
-      return result && result.kind === (formal.key === 'preferences' ? 'preference' : 'scale') && (result.kind === 'preference' ? result.score === null : typeof result.score === 'number' && Number.isFinite(result.score) && result.score >= 1 && result.score <= 5) && result.subdimensions.length === formal.subdimensions.length && formal.subdimensions.every(sub => {
+      return result && result.kind === (formal.key === 'preferences' ? 'preference' : 'scale') && typeof result.score === 'number' && Number.isFinite(result.score) && result.score >= 1 && result.score <= 5 && result.subdimensions.length === formal.subdimensions.length && formal.subdimensions.every(sub => {
         const score = result.subdimensions.find(s => s.key === sub.key && s.name === sub.name);
         return score && Number.isFinite(score.score) && score.score >= 1 && score.score <= 5 && score.itemIds.join('|') === sub.items.map(item => item.item_id).join('|');
       });

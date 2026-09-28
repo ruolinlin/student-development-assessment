@@ -12,6 +12,7 @@ import { createStudentReport, type StudentReport } from '@/lib/student-report';
 import { isComplete, questions, responseOptions } from '@/lib/question-bank';
 import { profileFields, validateSession, type AssessmentSession } from '@/lib/assessment-session';
 import { createBrowserSession, loadBrowserSession, saveBrowserAnswer } from '@/lib/browser-session';
+import { scoreAssessment } from '@/lib/scoring';
 
 export function HelloArtwork() {
   return <svg className="hello-art" viewBox="0 0 680 270" role="img" aria-label="Hello">
@@ -74,7 +75,7 @@ export function StudentExperience() {
         adopt(body.session);
         if (location.hash === '#assessment') setScreen('assessment');
         else if (body.session.status === 'completed') {
-          if ((location.hash === '#report' || location.hash === '#counselor') && body.session.completedProfileSteps === profileFields.length) { const data = createStudentReport(body.session); setReport(data); setScreen(location.hash === '#counselor' && data.counselorPackageStatus === 'ready' ? 'counselor' : 'report'); }
+          if ((location.hash === '#report' || location.hash === '#counselor') && body.session.completedProfileSteps === profileFields.length) { const data = createStudentReport(body.session, scoreAssessment(body.session.answers)); setReport(data); setScreen(location.hash === '#counselor' && data.counselorPackageStatus === 'ready' ? 'counselor' : 'report'); }
           else if (location.hash === '#personal-information' || location.hash === '#report' || location.hash === '#counselor') setScreen('personal-information');
           else if (location.hash === '#complete' || location.hash === '#profile-complete') setScreen(resumeScreen(body.session));
         }
@@ -147,7 +148,7 @@ export function StudentExperience() {
     try {
       const body = { session: loadBrowserSession() };
       if (!validateSession(body.session)) throw new Error('暂时无法读取已保存的信息，请重试。');
-      const nextReport = createStudentReport(body.session);
+      const nextReport = createStudentReport(body.session, scoreAssessment(body.session.answers));
       adopt(body.session); setReport(nextReport); setScreen('report');
     } catch (e) { setError(e instanceof Error ? e.message : '暂时无法生成报告，请重试。'); }
     finally { setSaving(false); }

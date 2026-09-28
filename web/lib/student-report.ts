@@ -1,12 +1,13 @@
 import { bankVersion, isComplete, questions, responseOptions } from './question-bank';
 import { profileFields, type AssessmentSession } from './assessment-session';
-import type { DimensionResult, PreferenceResult, StudentReportData } from './development-types';
+import type { StudentReportData } from './development-types';
+import type { ScoringOutput } from './scoring/scoring-types';
 import { createDevelopmentProfile } from './development-profile';
 import { hasCompleteDimensionResults } from './counselor-package';
 
-export type ScoringOutput = { version: string; dimensions: DimensionResult[]; preferences: PreferenceResult[] };
+export type { ScoringOutput } from './scoring/scoring-types';
 // Shared bottom-layer data: report and counselor materials branch from this object.
-// Until a scoring policy is approved, real sessions must not invent results.
+// Real sessions receive one immutable scoring result; report and counselor exports read this same object.
 export function createStudentReport(session: AssessmentSession, results: ScoringOutput | null = null, mode: 'student' | 'testing' = 'student'): StudentReportData {
   if (!isComplete(session.answers) || session.completedProfileSteps !== profileFields.length) throw new Error('请先完成测评和六项个人信息。');
   const data: StudentReportData = {

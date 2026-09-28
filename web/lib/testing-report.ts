@@ -13,8 +13,9 @@ export function createTestingReport() {
     currentProfileStep: 5, completedProfileSteps: 6,
   };
   const sample = [2.5, 3.5, 4.0, 3.0];
+  const preferenceClarity = Math.round((1 + sample.reduce((sum, position) => sum + Math.abs(position - 3), 0) / sample.length * 2) * 100) / 100;
   const results: ScoringOutput = { version: 'ui-fixture-only-not-scored', dimensions: formalDimensions.map((dimension, index) => ({
-    key: dimension.key, name: dimension.name, kind: dimension.key === 'preferences' ? 'preference' : 'scale', score: dimension.key === 'preferences' ? null : sample[index % sample.length],
+    key: dimension.key, name: dimension.name, kind: dimension.key === 'preferences' ? 'preference' : 'scale', score: dimension.key === 'preferences' ? preferenceClarity : sample[index % sample.length],
     explanation: '以下为界面测试结果，仅验证正式维度结构与展示，不代表真实学生。',
     subdimensions: dimension.subdimensions.map((sub, subIndex) => ({ key: sub.key, name: sub.name, dimensionKey: dimension.key, itemIds: sub.items.map(item => item.item_id), score: sample[subIndex % sample.length], explanation: '测试位置用于检查量尺和子维度显示。', situation: `对应题目情境：“${sub.items[0].question_text}”` })),
   })), preferences: formalDimensions.filter(d => d.key === 'preferences').flatMap(d => d.subdimensions.map((sub, index) => {
