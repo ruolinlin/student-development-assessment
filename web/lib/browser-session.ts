@@ -2,6 +2,25 @@ import { bankVersion, isComplete, questions } from './question-bank';
 import { emptyPersonalInformation, profileFields, validateSession, type AssessmentSession } from './assessment-session';
 
 const storageKey = 'student-development-assessment:beta-1.0';
+const counselorGenerationKey = 'student-development-assessment:counselor-v1';
+
+type CounselorGeneration = { bankVersion: string; sessionRevision: number; generatedAt: string };
+
+export function hasGeneratedCounselorMaterials(session: AssessmentSession): boolean {
+  const raw = window.localStorage.getItem(counselorGenerationKey);
+  if (!raw) return false;
+  try {
+    const value = JSON.parse(raw) as Partial<CounselorGeneration>;
+    return value.bankVersion === session.bankVersion && value.sessionRevision === session.revision && typeof value.generatedAt === 'string';
+  } catch {
+    return false;
+  }
+}
+
+export function markCounselorMaterialsGenerated(session: AssessmentSession) {
+  const value: CounselorGeneration = { bankVersion: session.bankVersion, sessionRevision: session.revision, generatedAt: new Date().toISOString() };
+  window.localStorage.setItem(counselorGenerationKey, JSON.stringify(value));
+}
 
 export function loadBrowserSession(): AssessmentSession | null {
   const raw = window.localStorage.getItem(storageKey);

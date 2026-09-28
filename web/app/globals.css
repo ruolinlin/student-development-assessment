@@ -180,6 +180,10 @@ button.back-action { color: #73798c; height: 48px; font-size: 14px; padding-left
 
 .completion-screen h2 { font-size: 22px; font-weight: 500; line-height: 1.7; }
 .completion-screen > p { max-width: 500px; margin: 20px auto 36px; font-size: 16px; }
+.counselor-transition .eyebrow { margin: 22px auto 16px; color: #625bad; font-size: 13px; }
+.counselor-transition h1 { margin-bottom: 12px; }
+.counselor-transition h2 { max-width: 520px; margin: 0 auto; }
+.counselor-transition > .quiet-note { margin: 20px auto 0; font-size: 13px; }
 button.completion-secondary { display: flex; margin: 18px auto 0; color: #72788b; font-size: 14px; }
 .personal-information-screen { width: 100%; max-width: 740px; margin: 66px auto 0; padding: 0 40px 80px; }
 .profile-meta { display: flex; justify-content: space-between; gap: 20px; color: #72788b; font-size: 14px; margin-bottom: 38px; }

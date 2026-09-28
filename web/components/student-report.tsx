@@ -47,9 +47,9 @@ export function StudentReportView({ report, onEdit, onCounselor }: { report: Stu
     <section aria-labelledby="questions-title"><h2 id="questions-title">05｜值得继续认识的问题</h2>{report.developmentProfile ? <ol className="exploration-questions">{report.developmentProfile.explorationQuestions.map(question => <li key={question}>{question}</li>)}</ol> : <p>探索问题将在维度结果和经历对照后形成。</p>}</section>
     <section aria-labelledby="next-title"><h2 id="next-title">06｜下一步</h2><p>这份报告帮助你看见目前已经出现的发展线索，但不等于专业选择结论。下一阶段可以由升学指导师结合测评、你的真实经历，以及大学专业和职业的实时信息进行进一步分析。</p></section>
     <details className="report-answers"><summary>查看全部 {report.rawAnswers.length} 个原始回答</summary><ol>{report.rawAnswers.map(answer => <li key={answer.itemId}><p>{answer.question}</p><span>{answer.value} · {answer.label}</span></li>)}</ol></details>
-    <section className="results-center" aria-labelledby="ready-title"><h2 id="ready-title">{report.counselorPackageStatus === 'ready' ? '发展报告已经准备好了 ✓' : '你的资料已保存'}</h2>
-      <p>你可以先查看或下载自己的发展报告。如果希望进一步进行大学专业和生涯探索，还可以生成一份供升学指导师使用的分析资料。</p>
-      <Button className="primary-action" disabled={report.counselorPackageStatus !== 'ready'} onClick={onCounselor}>生成导师分析资料<ArrowRight/></Button>
+    <section className="results-center" aria-labelledby="ready-title"><h2 id="ready-title">{report.counselorPackageStatus === 'ready' ? '完整资料已经准备好了 ✓' : '你的资料已保存'}</h2>
+      <p>你可以查看或下载完整发展报告，也可以返回已经生成的导师分析资料。</p>
+      <Button className="primary-action" disabled={report.counselorPackageStatus !== 'ready'} onClick={onCounselor}>查看导师分析资料<ArrowRight/></Button>
       <div className="artifact-actions"><Button variant="ghost" onClick={() => heading.current?.focus()}>查看我的发展报告</Button><Button variant="ghost" disabled={!report.dimensionResults} onClick={download}><Download/>下载我的发展报告</Button><Button variant="ghost" onClick={onEdit}>回看个人信息</Button></div>
       {error && <p role="alert" className="profile-error">{error}</p>}
     </section>
