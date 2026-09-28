@@ -36,7 +36,7 @@ export function HelloArtwork() {
   </svg>;
 }
 export function StageProgress({ active = 0, complete = false, finished = false }: { active?: number; complete?: boolean; finished?: boolean }) {
-  return <nav className="stages" aria-label="完整流程"><ol>{['完成测评', '补充个人信息', '生成发展报告', '导师分析资料'].map((title, i) => <li key={title} aria-current={!finished && i === active ? 'step' : undefined} className={!finished && i === active ? 'current' : ''}><span className="stage-number">{finished || i < active || (complete && i === 0) ? '✓' : `0${i + 1}`}</span><span>{title}</span></li>)}</ol></nav>;
+  return <nav className="stages" aria-label="完整流程"><ol>{['完成测评', '补充个人信息', '生成测试结果', 'AI分析资料包'].map((title, i) => <li key={title} aria-current={!finished && i === active ? 'step' : undefined} className={!finished && i === active ? 'current' : ''}><span className="stage-number">{finished || i < active || (complete && i === 0) ? '✓' : `0${i + 1}`}</span><span>{title}</span></li>)}</ol></nav>;
 }
 function resumeScreen(session: AssessmentSession) {
   if (session.status !== 'completed') return 'assessment' as const;

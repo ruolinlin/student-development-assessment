@@ -47,7 +47,7 @@ async function student(preferredName) {
   assert.equal(session.completedProfileSteps, 6);
   const { createStudentReport } = await import(pathToFileURL(reportModule).href);
   const report = createStudentReport(session);
-  assert.equal(report.title, preferredName ? `${preferredName}的发展报告` : '你的发展报告');
+  assert.equal(report.title, preferredName ? `${preferredName}的测试结果` : '你的测试结果');
   assert.deepEqual(report.studentContext, { preferredName, ...session.personalInformation });
   assert.equal(report.rawAnswers.length, 72);
   assert.equal(report.assessmentResults, null);

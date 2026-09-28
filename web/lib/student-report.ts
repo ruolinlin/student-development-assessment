@@ -13,7 +13,7 @@ export function createStudentReport(session: AssessmentSession, results: Scoring
   const data: StudentReportData = {
     schemaVersion: 1,
     source: { bankVersion, scoringVersion: results?.version ?? null, sessionRevision: session.revision, mode },
-    title: session.preferredName ? `${session.preferredName}的发展报告` : '你的发展报告',
+    title: session.preferredName ? `${session.preferredName}的测试结果` : '你的测试结果',
     studentContext: { preferredName: session.preferredName, ...session.personalInformation },
     updatedAt: session.updatedAt,
     assessmentResults: results ? { scoringVersion: results.version, answeredCount: questions.length } : null,
