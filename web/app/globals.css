@@ -17,7 +17,7 @@ main { flex: 1; }
 .current .stage-number { color: white; background: #6c63bc; border-color: #6c63bc; }
 .welcome { padding: 32px 24px 70px; text-align: center; max-width: 860px; margin: auto; }
 .hello-art { width: min(560px,90vw); height: auto; display: block; margin: auto; overflow: visible; }
-.hello-script { font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "URW Chancery L", cursive; font-size: 178px; font-style: italic; font-weight: 400; letter-spacing: -12px; }
+.hello-script { font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "URW Chancery L", cursive; font-size: 178px; font-style: italic; font-weight: 400; letter-spacing: -4px; }
 .hello-glow { opacity: .2; }
 .welcome-art { height: 208px; margin: 0 auto 14px; width: min(430px,100%); }
 .welcome-art .hello-art { width: 100%; }
