@@ -50,7 +50,7 @@ export function StudentReportView({ report, onEdit, onCounselor }: { report: Stu
     <section className="results-center" aria-labelledby="ready-title"><h2 id="ready-title">{report.counselorPackageStatus === 'ready' ? '完整资料已经准备好了 ✓' : '你的资料已保存'}</h2>
       <p>点击查看AI分析资料包，下载资料包，发送给任意AI生成完整报告。</p>
       <Button className="primary-action" disabled={report.counselorPackageStatus !== 'ready'} onClick={onCounselor}>查看AI分析资料包<ArrowRight/></Button>
-      <div className="artifact-actions"><Button variant="ghost" onClick={() => heading.current?.focus()}>查看我的发展报告</Button><Button variant="ghost" disabled={!report.dimensionResults} onClick={download}><Download/>下载我的发展报告</Button><Button variant="ghost" onClick={onEdit}>回看个人信息</Button></div>
+      <div className="artifact-actions"><Button variant="ghost" onClick={() => heading.current?.focus()}>查看测试答案</Button><Button variant="ghost" disabled={!report.dimensionResults} onClick={download}><Download/>下载测试答案</Button><Button variant="ghost" onClick={onEdit}>回看个人信息</Button></div>
       {error && <p role="alert" className="profile-error">{error}</p>}
     </section>
   </article>;
