@@ -5,8 +5,12 @@
 body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #252b3b; }
 .experience { min-height: 100svh; display: flex; flex-direction: column; background: radial-gradient(ellipse at 36% 36%,#e9eafa99,transparent 43%),radial-gradient(ellipse at 68% 44%,#e2f3f680,transparent 40%),#fafbfe; }
 .site-header { height: 96px; padding: 0 5.5%; display: flex; align-items: center; justify-content: space-between; }
-.wordmark { font-size: 16px; font-weight: 600; letter-spacing: .02em; display: inline-flex; gap: 12px; align-items: center; color: #303343; text-decoration: none; }
-.brand-mark { font-size: 34px; line-height: 1; color: #7167bc; font-weight: 400; }
+.wordmark { display: inline-flex; gap: 12px; align-items: center; color: #303343; text-decoration: none; }
+.brand-logo { position: relative; display: block; flex: 0 0 52px; width: 52px; height: 36px; overflow: hidden; }
+.brand-logo img { position: absolute; width: 93px; max-width: none; height: auto; left: -22px; top: -20px; mix-blend-mode: multiply; }
+.brand-copy { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+.brand-title { font-size: 16px; font-weight: 600; letter-spacing: .02em; }
+.brand-subtitle { margin-top: 6px; color: #656daf; font-size: 10px; font-weight: 600; letter-spacing: .13em; }
 .header-note { font-size: 13px; color: #727889; display: flex; align-items: center; gap: 14px; }
 main { flex: 1; }
 .stages { max-width: 590px; margin: 25px auto 0; padding: 0 24px; }
@@ -32,7 +36,6 @@ button.primary-action:hover { background: #474294; transform: translateY(-1px); 
 .quiet-note { color: #666e80; font-size: 13px; margin-top: 18px; line-height: 1.7; }
 .mobile-break { display: none; }
 .site-footer { padding: 24px 5.5%; display: flex; gap: 16px; justify-content: space-between; color: #697182; font-size: 12px; }
-.experience-hello .site-header,
 .experience-hello .stages { display: none; }
 .hello-screen { padding: clamp(150px,22vh,230px) 24px 100px; max-width: 760px; margin: auto; text-align: center; }
 .hello-screen .hello-art { width: min(680px,94vw); margin-bottom: 30px; }
@@ -42,7 +45,7 @@ input.name-input { max-width: 330px; height: 54px; text-align: center; font-size
 .skip-link { position: fixed; top: -100px; left: 20px; padding: 12px; background: white; z-index: 100; }
 .skip-link:focus { top: 10px; }
 :focus-visible { outline: 3px solid #6961bd; outline-offset: 4px; }
-@media (max-width:600px) { .site-header { height: 78px; padding: 0 24px; }.header-note { display: none; }.wordmark { font-size: 14px; }.stages { margin-top: 13px; }.stages li { font-size: 12px; gap: 6px; }.stage-number { width: 23px; height: 23px; }.stages ol { gap: 8px; }.welcome { padding-top: 40px; }.welcome-art { height: 175px; max-width: 340px; }.welcome h1 { font-size: 33px; }.intro { font-size: 15px; }.mobile-break { display: block; }.site-footer { justify-content: center; padding: 22px; }.site-footer span:last-child { display: none; }.hello-screen { padding-top: clamp(90px,17vh,140px); }.hello-screen .hello-art { width: 390px; max-width: 108%; margin-left: -4%; }.hello-screen h1 { margin-top: -4px; margin-bottom: 30px; } }
+@media (max-width:600px) { .site-header { height: 78px; padding: 0 24px; }.header-note { display: none; }.wordmark { gap: 9px; }.brand-logo { flex-basis: 44px; width: 44px; height: 31px; }.brand-logo img { width: 79px; left: -19px; top: -17px; }.brand-title { font-size: 14px; }.brand-subtitle { margin-top: 5px; font-size: 9px; }.stages { margin-top: 13px; }.stages li { font-size: 12px; gap: 6px; }.stage-number { width: 23px; height: 23px; }.stages ol { gap: 8px; }.welcome { padding-top: 40px; }.welcome-art { height: 175px; max-width: 340px; }.welcome h1 { font-size: 33px; }.intro { font-size: 15px; }.mobile-break { display: block; }.site-footer { justify-content: center; padding: 22px; }.site-footer span:last-child { display: none; }.hello-screen { padding-top: clamp(90px,17vh,140px); }.hello-screen .hello-art { width: 390px; max-width: 108%; margin-left: -4%; }.hello-screen h1 { margin-top: -4px; margin-bottom: 30px; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration: .01ms!important; transition-duration: .01ms!important; scroll-behavior: auto!important; }.ink { stroke-dashoffset: 0; } }
 
 @utility scrollbar-thin {

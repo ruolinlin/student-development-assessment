@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CheckCheck, LoaderCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -171,7 +172,7 @@ export function StudentExperience() {
     finally { setSaving(false); }
   }
 
-  return <div className={`experience experience-${screen}`}><header className="site-header"><a href="./" className="wordmark"><span className="brand-mark" aria-hidden="true">✳</span>学生发展优势测评</a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
+  return <div className={`experience experience-${screen}`}><header className="site-header"><a href="./" className="wordmark"><span className="brand-logo" aria-hidden="true"><Image src="/student-development-assessment/rs-insight.png" alt="" width={1254} height={1254} priority unoptimized/></span><span className="brand-copy"><span className="brand-title">学生发展优势测评</span><span className="brand-subtitle">RS Insight</span></span></a><span className="header-note">每一种成长，都有自己的方向 <ArrowUpRight size={15}/></span></header>
     <main id="main-content"><StageProgress active={screen === 'counselor-transition' || screen === 'counselor' ? 3 : screen === 'profile-complete' || screen === 'report' ? 2 : screen === 'complete' || screen === 'personal-information' ? 1 : 0} complete={session?.status === 'completed'} finished={counselorGenerated}/>
       {error && <div className="error-message" role="alert">{error}{screen === 'home' && <Button variant="ghost" onClick={() => location.reload()}>重新读取</Button>}</div>}
       {screen === 'home' && <section className="welcome"><div className="welcome-art"><HelloArtwork/></div><p className="eyebrow">请花时间，在安静的环境下完成测评</p><h1>发现优势<br/><span>探索未来</span></h1><Button disabled={loading || Boolean(error)} className="primary-action" onClick={() => setScreen(session ? resumeScreen(session) : 'hello')}>{loading ? '正在读取进度' : session ? '继续完成测评' : '开始测评'} <ArrowRight/></Button><p className="quiet-note">{session ? `${session.preferredName ? session.preferredName + '，' : ''}已为你保存 ${answered} / ${questions.length} 个回答` : '不必急着给未来一个答案'}</p></section>}
