@@ -4,7 +4,6 @@ import { Check, Copy, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { StudentReportData } from '@/lib/development-types';
 import { artifactFilename, createCounselorPackage, counselorPackageMarkdown } from '@/lib/counselor-package';
-import { studentReportMarkdown } from '@/lib/student-report-markdown';
 import { downloadText } from '@/lib/download-text';
 
 export function CounselorMaterials({ data, onReport }: { data: StudentReportData; onReport: () => void }) {
@@ -24,6 +23,5 @@ export function CounselorMaterials({ data, onReport }: { data: StudentReportData
   return <section className="student-report counselor-materials"><span className="completion-check"><Check size={30}/></span><h1 ref={heading} tabIndex={-1}>AI分析资料包已准备好 ✓</h1><p className="report-status">这份资料整合了你的测评结果和个人经历，可以发给AI进行分析。</p>
     {data.source.mode === 'testing' && <p className="testing-notice">测试资料，不代表真实学生。</p>}
     <section><h2>AI辅助分析测试</h2><p>开始生涯与专业分析</p><div className="artifact-actions"><Button className="primary-action" onClick={() => downloadText(artifactFilename('counselor', data.studentContext.preferredName), materials)}><Download/>下载分析资料</Button><Button variant="ghost" onClick={() => void copy()}><Copy/>复制导师分析资料</Button></div><p role="status">{feedback}</p>{error && <p className="profile-error" role="alert">{error}</p>}{manualCopy && <textarea className="manual-copy" aria-label="待复制的导师分析资料" readOnly value={materials} onFocus={e => e.target.select()}/>}</section>
-    <section><h2>查看测试答案</h2><div className="artifact-actions"><Button className="primary-action" onClick={onReport}>查看报告</Button><Button className="primary-action" onClick={() => downloadText(artifactFilename('student', data.studentContext.preferredName), studentReportMarkdown(data))}>下载报告</Button></div></section>
   </section>;
 }
