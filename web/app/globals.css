@@ -253,6 +253,14 @@ textarea.profile-input { min-height: 180px; resize: vertical; overflow-y: hidden
 .artifact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; }
 .artifact-actions button { min-height: 44px; }
 .counselor-materials .completion-check { margin-left: 0; }
+.counselor-materials > .report-status { margin-bottom: 14px; }
+.ai-tool-recommendation { display: flex; align-items: center; gap: 9px; margin: 0 0 42px; color: #5b56b1; font-size: 15px; line-height: 1.7; }
+.ai-tool-recommendation strong { font-weight: 650; }
+.report-reference-image { display: block; overflow: hidden; border: 1px solid #d9dced; border-radius: 16px; background: #f7f8fc; box-shadow: 0 12px 34px #4a527014; transition: transform .18s ease, box-shadow .18s ease; }
+.report-reference-image:hover { transform: translateY(-2px); box-shadow: 0 16px 40px #4a52701f; }
+.report-reference-image:focus-visible { outline: 3px solid #7671d1; outline-offset: 4px; }
+.report-reference-image img { display: block; width: 100%; height: auto; }
+.report-reference-caption { margin: 12px 0 0; color: #757c90; font-size: 13px; text-align: center; }
 .manual-copy { width: 100%; min-height: 230px; border: 1px solid #d9deec; border-radius: 12px; padding: 16px; font-size: 16px; }
 .testing-notice { padding: 16px 24px; background: #eeeefb; color: #615a94; line-height: 1.7; }
 @media(max-width:600px) {
