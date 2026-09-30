@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { StudentReportData } from '@/lib/development-types';
 import { studentReportMarkdown } from '@/lib/student-report-markdown';
@@ -20,6 +20,14 @@ export function StudentReportView({ report, onEdit, onCounselor }: { report: Stu
     <p className="eyebrow">我的测试结果{report.source.mode === 'testing' ? ' · 测试资料' : ''}</p>
     <h1 ref={heading} id="report-title" tabIndex={-1}>{report.title}</h1>
     <p className="report-status">{report.dimensionResults ? '这是一份关于你目前如何描述自己的发展记录。它不代表客观能力，不用于和其他学生比较，也不替你决定未来。' : '维度结果尚未准备好。已填写的信息和原始回答仍然保留，完整发展报告及导师分析资料暂不可生成。'}</p>
+    <section className="results-center" aria-labelledby="ready-title">
+      <p className="results-center-kicker"><Star size={16} fill="currentColor" aria-hidden="true"/>重要提示</p>
+      <h2 id="ready-title">{report.counselorPackageStatus === 'ready' ? '完整资料已经准备好了 ✓' : '你的资料已保存'}</h2>
+      <p>下载 AI 分析资料包后，发送给任意 AI 进行分析，获取完整测评报告。</p>
+      <Button className="primary-action" disabled={report.counselorPackageStatus !== 'ready'} onClick={onCounselor}>查看AI分析资料包<ArrowRight/></Button>
+      <div className="artifact-actions"><Button variant="ghost" onClick={() => heading.current?.focus()}>查看测试答案</Button><Button variant="ghost" disabled={!report.dimensionResults} onClick={download}><Download/>下载测试答案</Button><Button variant="ghost" onClick={onEdit}>回看个人信息</Button></div>
+      {error && <p role="alert" className="profile-error">{error}</p>}
+    </section>
     <section aria-labelledby="portrait-title"><h2 id="portrait-title">01｜我的发展画像</h2>
       {report.dimensionResults ? <>
         <p className="profile-hint">1–5 量尺展示本次自我描述。偏好方向单独呈现。</p>
@@ -47,11 +55,5 @@ export function StudentReportView({ report, onEdit, onCounselor }: { report: Stu
     <section aria-labelledby="questions-title"><h2 id="questions-title">05｜值得继续认识的问题</h2>{report.developmentProfile ? <ol className="exploration-questions">{report.developmentProfile.explorationQuestions.map(question => <li key={question}>{question}</li>)}</ol> : <p>探索问题将在维度结果和经历对照后形成。</p>}</section>
     <section aria-labelledby="next-title"><h2 id="next-title">06｜下一步</h2><p>这份报告帮助你看见目前已经出现的发展线索，但不等于专业选择结论。下一阶段可以由升学指导师结合测评、你的真实经历，以及大学专业和职业的实时信息进行进一步分析。</p></section>
     <details className="report-answers"><summary>查看全部 {report.rawAnswers.length} 个原始回答</summary><ol>{report.rawAnswers.map(answer => <li key={answer.itemId}><p>{answer.question}</p><span>{answer.value} · {answer.label}</span></li>)}</ol></details>
-    <section className="results-center" aria-labelledby="ready-title"><h2 id="ready-title">{report.counselorPackageStatus === 'ready' ? '完整资料已经准备好了 ✓' : '你的资料已保存'}</h2>
-      <p>点击查看AI分析资料包，下载资料包，发送给任意AI生成完整报告。</p>
-      <Button className="primary-action" disabled={report.counselorPackageStatus !== 'ready'} onClick={onCounselor}>查看AI分析资料包<ArrowRight/></Button>
-      <div className="artifact-actions"><Button variant="ghost" onClick={() => heading.current?.focus()}>查看测试答案</Button><Button variant="ghost" disabled={!report.dimensionResults} onClick={download}><Download/>下载测试答案</Button><Button variant="ghost" onClick={onEdit}>回看个人信息</Button></div>
-      {error && <p role="alert" className="profile-error">{error}</p>}
-    </section>
   </article>;
 }

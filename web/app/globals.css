@@ -246,7 +246,9 @@ textarea.profile-input { min-height: 180px; resize: vertical; overflow-y: hidden
 .evidence-connection { margin-bottom: 30px; }
 .evidence-connection blockquote { border-left: 2px solid #bcc4e5; padding-left: 18px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; color: #5e667c; }
 .exploration-questions { padding-left: 24px; display: grid; gap: 22px; font-size: 17px; line-height: 1.9; }
-.results-center { margin-top: 40px; }
+.student-report section.results-center { margin: 0 0 46px; padding: 28px; border: 1px solid #ccc9ef; border-radius: 18px; background: linear-gradient(135deg,#f2f2ff 0%,#f5f9ff 100%); box-shadow: 0 14px 36px #5b56b112; }
+.results-center-kicker { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; color: #5b56b1 !important; font-size: 14px !important; font-weight: 650; letter-spacing: .08em; }
+.results-center > h2 { margin-bottom: 14px; }
 .results-center > .primary-action { margin-top: 22px; }
 .artifact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; }
 .artifact-actions button { min-height: 44px; }
@@ -257,6 +259,7 @@ textarea.profile-input { min-height: 180px; resize: vertical; overflow-y: hidden
   .stages ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 16px; }
   .stages li { font-size: 13px; }
   .student-report .eyebrow { letter-spacing: .04em; }
+  .student-report section.results-center { margin-bottom: 36px; padding: 24px 20px; }
   .artifact-actions { align-items: stretch; flex-direction: column; }
   .artifact-actions button { width: 100%; }
   .subdimension-list h4 { font-size: 15px; gap: 10px; }
