@@ -256,6 +256,17 @@ textarea.profile-input { min-height: 180px; resize: vertical; overflow-y: hidden
 .counselor-materials > .report-status { margin-bottom: 14px; }
 .ai-tool-recommendation { display: flex; align-items: center; gap: 9px; margin: 0 0 42px; color: #5b56b1; font-size: 15px; line-height: 1.7; }
 .ai-tool-recommendation strong { font-weight: 650; }
+.ai-report-guide > p { margin: -8px 0 24px; }
+.ai-guide-steps { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.ai-guide-steps > li { display: grid; grid-template-columns: 36px minmax(0,1fr); gap: 16px; padding: 22px; border: 1px solid #dfe2ef; border-radius: 16px; background: #ffffff9c; }
+.ai-guide-number { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: #fff; background: linear-gradient(135deg,#72b9e8,#7d6dcb); font-size: 15px; font-weight: 700; }
+.ai-guide-steps h3 { margin: 4px 0 8px; font-size: 18px; }
+.ai-guide-steps p { margin: 0 0 16px; color: #646c80; font-size: 15px; line-height: 1.75; }
+.ai-guide-steps button { min-height: 46px; }
+.ai-guide-steps button.guide-copy-action { border-color: #7770c6; color: #514ba5; background: #f8f7ff; }
+.ai-guide-steps button.guide-copy-action:hover { background: #efedff; color: #46408f; }
+.ai-guide-steps .copy-feedback { min-height: 24px; margin: 10px 0 0; color: #4f6997; font-size: 14px; }
+.ai-guide-steps .profile-error { margin-top: 10px; color: #934434; }
 .report-reference-image { display: block; overflow: hidden; border: 1px solid #d9dced; border-radius: 16px; background: #f7f8fc; box-shadow: 0 12px 34px #4a527014; transition: transform .18s ease, box-shadow .18s ease; }
 .report-reference-image img { display: block; width: 100%; height: auto; }
 .manual-copy { width: 100%; min-height: 230px; border: 1px solid #d9deec; border-radius: 12px; padding: 16px; font-size: 16px; }
@@ -267,5 +278,8 @@ textarea.profile-input { min-height: 180px; resize: vertical; overflow-y: hidden
   .student-report section.results-center { margin-bottom: 36px; padding: 24px 20px; }
   .artifact-actions { align-items: stretch; flex-direction: column; }
   .artifact-actions button { width: 100%; }
+  .ai-guide-steps > li { grid-template-columns: 32px minmax(0,1fr); gap: 12px; padding: 18px 16px; }
+  .ai-guide-number { width: 32px; height: 32px; }
+  .ai-guide-steps button { width: 100%; }
   .subdimension-list h4 { font-size: 15px; gap: 10px; }
 }

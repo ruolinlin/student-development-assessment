@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createTestingReport } from '../lib/testing-report';
 import { formalDimensions } from '../lib/formal-dimensions';
-import { createCounselorPackage, counselorPackageMarkdown, artifactFilename, hasCompleteDimensionResults } from '../lib/counselor-package';
+import { aiReportExecutionPrompt, createCounselorPackage, counselorPackageMarkdown, artifactFilename, hasCompleteDimensionResults } from '../lib/counselor-package';
 import { studentReportMarkdown } from '../lib/student-report-markdown';
 import { counselorPromptTemplate, counselorPromptVersion } from '../prompts/counselor-analysis-v3';
 
@@ -70,4 +70,6 @@ for (const changes of [{dimensionResults:null}, {preferenceResults:[]}, {develop
 }
 assert.equal(artifactFilename('counselor',''), '导师分析资料.md');
 assert.equal(artifactFilename('counselor','小雨'), '导师分析资料_小雨.md');
+const executionPrompt = aiReportExecutionPrompt('导师分析资料_小雨.md', '小雨');
+for (const requirement of ['明确授权执行', '单文件 HTML', '小雨_大学专业与生涯探索报告.html', 'report-reference.png', 'rs-insight.png', '内嵌 CSS', '00–12']) assert.ok(executionPrompt.includes(requirement));
 console.log('PASS: official dimensions, shared structured data, V3.1 fixed 00–12 report schema, Executive Summary, validation/exploration/action schemas, prompt fidelity, separate Markdown exports, no parent fields');
